@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beats-deployment
+  labels:
+    app: beats
+    type: backend
+spec:
+  selector:
+    matchLabels:
+      type: backend
+  replicas: 3
+  template:
+    metadata:
+      name: beats-pod
+      labels:
+        app: beats
+        type: backend
+    spec:
+      containers:
+        - name: beats-container
+          image: beats
+  

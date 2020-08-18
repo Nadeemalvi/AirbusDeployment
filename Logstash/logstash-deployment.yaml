@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logstash-deployment
+  labels:
+    app: logstash
+    type: backend
+spec:
+  selector:
+    matchLabels:
+      type: backend
+  replicas: 3
+  template:
+    metadata:
+      name: logstash-pod
+      labels:
+        app: logstash
+        type: backend
+    spec:
+      containers:
+        - name: logstash-container
+          image: logstash
+  
